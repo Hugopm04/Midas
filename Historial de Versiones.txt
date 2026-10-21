@@ -1,0 +1,67 @@
+Midas 0.0
+    - Devuelve el valor de BTC en USD.
+
+Midas 0.1
+    - Nueva función que permite solicitar el precio de cualquier crypto.
+
+Midas 0.2
+    - Recoge los valores de BTC a lo largo del tiempo y los muestra en una gráfica (no en tiempo real).
+
+Midas 0.3
+    - Muestra un gráfico de los valores de BTC en tiempo real.
+    - La variable ax se hace global, porque así funciona jajajja.
+
+Midas 0.4
+    - La ventana del gráfico tiene nombre.
+    - Se ha convertido el gráfico principal, el del valor de BTC, en subgráfico.
+    - Se ha añadido el gráfico de la variación del crecimiento de BTC como subgráfico.
+
+Midas 0.5
+    - Ahora se calcula la media de la derivada.
+    - Se han eliminado todas las funciones gráficas.
+    - Se ha añadido una IA de castigo recompensa.
+        - La mayoría de información sobre su funcionamiento viene en el propio código.
+        - Toma de referencia el valor de la derivada, la media de la derivada y la varianza de los
+        precios.
+        - Es castigada tanto por perder dinero como por no ganarlo, para evitar la pasividad.
+        - Hay que recalcar que debido a la necesidad de crear "grupos" o "estados" la capacidad para
+        adaptarse a cambios en el tamaño de los valores de input, por ejemplo que pasen de moverse
+        entre valores entre 1 y 5 a moverse entre valores entre 70 y 200.
+        - Los valores propias de esta IA (epsilon, discountFactor y learningRate) están puestos a
+        ojo, son un buen lugar donde optimizar la velocidad y capacidad de aprendizaje de la IA.
+        - La IA guarda los qValues en un archivo npy que luego se puede reimportar en forma de 
+        array, además se guarda cada 10 iteraciones.
+        - Las posibles acciones a realizar por la IA y el como son puntuadas también es bastante
+        mejorable.
+        - Otro punto a mejorar es el "límite de gastos" de la IA, pues esta no puede invertir 
+        más de la mitad del dinero inicial, y cuando llegua a esa mitad "pierde la partida" y 
+        vuelve a empezar.
+
+Midas 0.6
+    - Se ha mejorado las acciones que se le permiten realizar a la IA, siendo ahora posible realizar o bien compra o bien venta, y 
+    posteriormente no se puede realizar ningún otro movimiento hasta que no se cierre el primero.
+    - Debido a estos cambios en las acciones también ha sufrido cambios la estructura de filas, pues ahora hay una segunda lista de filas
+    de 450 filas (225 para compra y 225 para ventas). Por tanto también se guardan estos qValues.
+    - El código relacionado con la selección de filas es muy caótico y se propone optimizarlo en versiones futuras.
+    - Es necesario revisar y mejorar el sistema de penalización por inactividad y el sistema de penalización / recompensa por "holdear".
+    - Es necesario crear una función que pueda cargar los qValues.
+    - La IA ahora utiliza también como dato el beneficio o pérdida de sus compras o ventas.
+    - Se han modificado los parámetros de la IA, se aprecia una menor tendencia a la pasividad, sin embargo ningún otro cambio notable.
+    - Es necesario reescribir el código de ejecución principal, pues actualmente es bastante caótico.
+
+Midas 0.7
+    - Se ha creado una función que optimiza y mejora considerablemente la estética de la selección de filas.
+    - Se ha creado una función para cargar los qValues.
+    - Se ha detectado y corregido un error que provocaba que la derivada fuera decreciendo indefinidamente a lo largo del tiempo. Debido
+    a la correción de este error, se han cambiado los "amplifiers" tanto de la derivada como de su media.
+    - Se ha mejorado ligeramente la estética del código principal de la simulación
+    - Se ha añadido el castigo / recompensa por "holdear" en función de si se está ganando o perdiendo dinero.
+
+Midas 0.8
+    - Se ha borrado todo y se ha comenzado de nuevo con una IA de redes neuronales. Esta recibe  como inputs el precio actual de la moneda,
+    su velocidad de variación, y la velocidad de variación de la velocidad de variación. Únicamente puede comprar o vender. Hay forma de
+    medir su precisión pero no de probarla en tiempo real. Las redes neuronales se pueden guardar y cargar a voluntad.
+
+Midas 0.9
+    - Ahora se pueden crear redes neuronales de más de 2 capas a voluntad, por tanto se ha cambiado el sistema de guardado y cargado de
+    las mismas.
